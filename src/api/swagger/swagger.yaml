@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  description: Default API design
+  version: 1.0.3
+  title: API DESIGN
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: localhost:3003
+basePath: /api
+tags:
+  - name: api
+    description: Api design.
+    externalDocs:
+      description: Documentation
+      url: >-
+        http://swagger.io
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  ApiKeyAuth:
+    type: apiKey
+    name: x-app-token
+    in: header
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /v1/login:
+    x-swagger-router-controller: login-controller
+    post:
+      consumes:
+        - application/json
+      description: Create token user
+      operationId: loginController
+      parameters:
+        - name: TL
+          in: body
+          description: id object sign.
+          required: false
+          schema:
+            $ref: '#/definitions/TL'
+      
+      responses:
+        "200":
+          description: Create token
+          schema:
+            $ref: '#/definitions/Token'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+definitions:
+  TL:
+    type: object
+    required:
+      - id
+    properties:     
+      id:
+        type: string
+        description: id sign
+  Token:
+    required:
+      - Authorization
+      - expiresIn
+    properties:
+      Authorization:
+        type: string
+        description: Token person
+      expiresIn:
+        type: string
+        description: Token expiration
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string

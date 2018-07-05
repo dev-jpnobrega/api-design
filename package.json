@@ -1,0 +1,30 @@
+{
+  "name": "default-api-design",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Default API Design",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "./src/app.js",
+  "dependencies": {
+    "aws-sdk": "^2.259.1",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
+    "express": "^4.12.3",
+    "jsonwebtoken": "^8.3.0",
+    "swagger-express-mw": "^0.1.0",
+    "swagger-tools": "^0.10.3",
+    "swagger-ui-express": "^3.0.10",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  },
+  "scripts": {
+    "start": "nodemon ./src/app.js",
+    "test": "swagger project test"
+  }
+}

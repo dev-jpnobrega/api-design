@@ -1,0 +1,9 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports: 
+      - 3003:3003
+    environment:
+      KEY: '{000-1-00232-111-931313-13142-12129-24-3333}'
+  
