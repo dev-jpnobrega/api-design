@@ -12,3 +12,14 @@ const loginController = (req, res) => {
 module.exports = {
     loginController: loginController
 };
+
+// Exemplo puxar arquivo do bucket
+/*
+const s3 = new AwsBucket();
+    s3.load(`gsp/products/${ searchText }.json`, (err, data) => {
+        if (err)
+            return res.status(204).send({ message: err.message });
+
+        return res.status(200).send({ data });
+    }); 
+*/
